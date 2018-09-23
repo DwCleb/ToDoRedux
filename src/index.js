@@ -1,15 +1,17 @@
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View, Button } from 'react-native';
+import { StyleSheet, Text, View, Button } from 'react-native';
 
-import Todo from './components/Todo';
+import 'config/ReactotronConfig';
+import 'config/DevToolsConfig';
+
+import Todo from 'components/Todo';
 
 export default class App extends Component {
   
   state = {
-    ususario: 'Diego',
     todos: [
-      { id: 0, text: 'Read a Arthicle'},
-      { id: 1, text: 'Study React Native'},
+      { id: 0, text: 'Read a Arthicle' },
+      { id: 1, text: 'Study React Native' },
     ]
   }
 
@@ -25,11 +27,8 @@ export default class App extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text>{ this.state.usuario }</Text>
-        { this.state.todos.map(todo => (
-          <Todo key={todo.id} title={todo.text} />
-        )) }
-        <Button title="Add new To do" onPress={this.addTodo}/>
+        <Todo title={'Do Coffee'}/>
+        <Todo title={'Study React Native'}/>
       </View>
     )
   }
@@ -38,8 +37,24 @@ export default class App extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: '#fff',
+    color: '#000',
+    flexDirection: 'column',
+    flexWrap: 'wrap',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  }
+  },
+  box : {
+    width: 80,
+    height: 80,
+    backgroundColor: '#F00',
+    margin: 10,
+    transform: [
+      { rotateZ: '20deg' }, 
+    ]
+  },
+
+  boxText: {
+    color: '#FFF',
+  },
 });
